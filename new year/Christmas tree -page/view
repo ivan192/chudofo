@@ -1,0 +1,295 @@
+$('#html-header').find('style').remove();
+
+function Christmas_Tree (){ /*==123==;
+
+<style>#pun_wrap, #pun_wrap2 { display:none; }
+html, body { background: url("http://spravka.mybb.ru/files/0013/65/ed/19383.jpg") no-repeat scroll center top #FFFFFF; height: 1080px; min-width: 800px;margin: 0!important; padding: 0!important;color:#000;}
+html{ background-position:center bottom;}
+* {margin: 0; padding: 0;}
+.col {margin: 0  auto -4px  auto;  padding-left: 116px;  padding-top: 28px;   width: 600px;}
+.row {display: inline-block; width: 600px; height: 155px; margin:-4px 0 4px 0;}
+.row7  {height: 120px;}
+.row1 .row-wrap {padding: 79px 253px 0; }
+.row2 .row-wrap {padding: 0 199px; }
+.row3 .row-wrap {padding: 0 147px; }
+.row4 .row-wrap {padding: 0 77px; }
+.row5 .row-wrap {padding: 0 41px; }
+.row6 .row-wrap {padding: 0 41px;}
+.row7 .row-wrap {padding: 86px 0 0;}
+.row.row1 .sell > div,
+.row.row2 .sell > div,
+.row.row3 .sell > div{top: 40px!important; bottom:auto!important;}
+.sell.End:after{content: "last-New!"; display:block; text-align:center; background:#fff; font-size:12px; width:60px; border-radius:4px; color:red; margin-top:-3px; margin-left:-12px; padding:2px 0; float:left;position: absolute; z-index:10;}
+.row.row7 .sell.End > img, .row.row7 .sell.End > div {margin-top:-17px!important; margin-bottom:17px!important;}
+.sell > img {cursor: pointer; position:relative;z-index:0;}
+.sell > img:hover {z-index:1200;}
+.sell {width: 32px; height: 32px; display: inline-block; margin-right: 3px; position: relative;}
+.sell > div { font: 12px/1.2 Arial;  bottom: 33px; left: -171px; padding: 0;  position: absolute; width: 378px; z-index: 100;}
+.brdEmul  tr.tr-2 img{max-width:307px;height:auto;}
+
+.brdEmul td.a1,
+.brdEmul td.a2,
+.brdEmul td.a3,
+.brdEmul tr.tr-1,
+.brdEmul tr.tr-2,
+.brdEmul tr.tr-3,
+.brdEmul {
+ margin:0;
+ padding:0;
+ background: none transparent;
+ background-clip: border-box;
+ border-collapse:collapse;
+ border: none transparent 0;
+}
+.brdEmul {
+ width:100%;
+ height:auto;
+}
+.brdEmul td.a1 {
+ width:30px;
+}
+.brdEmul td.a3 {
+ width:30px;
+}
+.brdEmul tr.tr-1{
+ height:33px;
+}
+.brdEmul tr.tr-3{
+ height:33px;
+}
+.sell > div {
+ background: url(http://spravka.mybb.ru/files/0013/65/ed/64453.png) no-repeat center top;
+}
+.brdEmul{
+ background: url(http://spravka.mybb.ru/files/0013/65/ed/23987.png) no-repeat center bottom;
+}
+
+.brdEmul tr.tr-2 td.a1{
+  background: url(http://spravka.mybb.ru/files/0013/65/ed/76780.png) repeat-y 0 -43px;
+}
+.brdEmul tr.tr-2 td.a3{
+  background: url(http://spravka.mybb.ru/files/0013/65/ed/76780.png) repeat-y -347px -65px;
+}
+.brdEmul tr.tr-2 td.a2{
+  background: url(http://spravka.mybb.ru/files/0013/65/ed/76780.png) repeat-y -31px 50%;
+}
+.brdEmul tr.tr-2 td.a2{
+  padding: 0 4px 0 7px;
+}
+
+
+.christmas .tipsy-arrow{
+ display:none!important;
+}
+.christmas div.tipsy-inner {
+padding:1px!important;
+border-radius: 7px!important;
+border:1px solid #7C8B9B!important;
+padding:1px 5px 2px 5px!important;
+background-color: #e1e1ec!important;
+}
+.christmas div.tipsy-inner {
+  font-size:11px!important;
+  color:#3B2E05!important;
+}
+.tipsy.christmas .tipsy-inner b {
+ color:#242C3B;
+ font-size:14px!important;
+ 
+}
+.christmas {
+margin-left: -4px!important;
+margin-top:0px!important;
+}
+
+#giftsub[disabled] {
+border:1px dashed red;
+background:none;
+background-clip:content-box;
+}
+</style>
+
+
+<script>
+function openGift(elem) {
+ $(".row-wrap div").not($(elem).next()).hide();
+   $('.sell>img').not($(elem)).removeClass('active');
+   $(elem).toggleClass('active');
+   setTimeout(function () {if($(elem).hasClass('active')){$(elem).next().stop().fadeIn(600);}
+   else $(elem).next().stop().hide();},200)
+}
+
+var imgArray = []; $('.giftelect img').each(function(){imgArray.push(this.src);});
+
+ var maxgift = 232; //MaxPosts;
+
+christmasPage = function () {
+	var posarr = [];
+	var seed = 1;
+	function random() {
+    		var x = Math.sin(seed++) * 10000;
+    		return x - Math.floor(x);
+	}
+
+	function creatSell(num, parent, startnum) {
+    		html = '';
+		for (i=startnum;i<num+startnum;i++) {
+        	   html+='<span class="sell sell'+(i+1)+'" />';
+		}
+ 		$(parent).append(html);
+	}
+	function verticalRand(sell, pos) {
+		var K = 4, G = 0; //Множитель пиксель и слагаемое;
+		if(sell.parent().parent().hasClass('row7')){K=1; G=-1;}
+		pos = K * pos + G;
+		pos = 'margin:'+pos+'px 0px '+(-pos)+'px 0px';
+ 		return pos;
+	}
+        (function() {
+	var ofsetTop=0,I=0;
+	return rowSpanStripingPadding = function () {
+
+		$('.row-wrap').find('.sell').each(function(){
+		   var ofsetT=$(this).offset().top;
+		   if(ofsetT>ofsetTop+6){ofsetTop = ofsetT; ++I;$(this).css({'margin-left':-(8*(I%2- 0.5))+'px'});} //,'outline':'red solid 1px'
+		});
+	}}())
+
+	var tBl = $('<table class="brdEmul" width=100%>\
+	<tr class=tr-1><td class=a1></td><td class=a2></td><td class=a3></td></tr>\
+	<tr class=tr-2 align=left valign=top><td class=a1></td><td class=a2>#</td><td class=a3></td></tr>\
+	<tr class=tr-3><td class=a1></td><td class=a2></td><td class=a3></td></tr></table>');
+
+	function addTbl(sell,Cnt) {
+		var tblN = tBl.clone().appendTo(sell.find('div'));
+		tblN.find('.tr-2>.a2').html(Cnt)
+	}
+
+	function addGift(sell, image, author, dats, content, pos) {
+		var dt = dats.replace(/(\d{2}:\d{2})(?::\d{2})?/,'&#60;b&#62;&#160;$1&#60;/b&#62;')
+		var author2 = author;
+		if(author.length > 12) author2 = author.replace(/(.{11})(.*)/ig,'$1 -<br>$2');
+		if(author.length > 12 && author.indexOf(' ')!=-1){
+			var a3 = author.split(' ');
+			if(a3.length==2 && a3[0].length < 12 && a3[1].length < 12) author2 = a3[0]+'<br>'+a3[1];
+		}
+		content ='От <b>'+author+'</b> &#160; '+ dats +'<br><small><br></small>'+ content;
+		author2 = author2.replace(/'/gim,"&#39;").replace(/"/gim,'&quot;').replace(/&/gim,'&amp;').replace(/</gim,'&lt;').replace(/>/gim,'&gt;');
+		sell.append('<img src="'+image+'"  style="'+pos+'" title=\'&#60;b&#62;'+author2+'&#60;/b&#62;&#60;br&#62;'+dt+'\' width="30" height="30" onclick="openGift(this);"><div style="display: none;'+pos+'"></div>');
+		addTbl(sell,content)
+
+		if(sell.hasClass('End'))$('<style type="text/css">.sell.End:after{margin-top:'+(-3+(author2=sell.parents('.row').hasClass('row7')?-15:0)+(+pos.split(/margin:|px/)[1]))+'px;}</style>').appendTo('body');
+		$(sell).find('img:first').tipsy({fade: true, html: true, gravity: 'e christmas',delayIn: 100,opacity:.9})
+	}
+	function randomPos(postlength){
+		index = Math.floor(random() * postlength);
+		while (posarr[index] == 1) {index = Math.floor(random() * postlength);}
+		posarr[index] = 1;
+		return index;
+	}
+	function addFirstPostGift(firstPst){
+		var img = '<img src="###" onclick="giftBtn(this)"/>';
+		var b = '= \n =', arr='png,gif,jpg,jpeg'.split(',');
+		var arr = b+arr.join(b)+b;
+		$(firstPst).find('.post-content p > a').each(function(){
+		  var lnk = this.href.replace(/^.*?click\.php\?/,'');
+		  var ext = lnk.toLowerCase().split(".");
+		  ext = ext[ext.length-1].split(/[#\?]/)[0];
+		  if(arr.indexOf(b+ext+b)!=-1)$(img.replace('###',lnk)).appendTo('#gift-area');
+		});
+	}
+
+	creatSell(4, $('.row1 .row-wrap'), 0);
+	creatSell(20, $('.row2 .row-wrap'), 4);
+	creatSell(32, $('.row3 .row-wrap'), 24);
+	creatSell(48, $('.row4 .row-wrap'), 56);
+	creatSell(56, $('.row5 .row-wrap'), 104);
+	creatSell(56, $('.row6 .row-wrap'), 160);
+	creatSell(16, $('.row7 .row-wrap'), 216);
+
+	rowSpanStripingPadding();	//Чередование cдвигов строк подарков: влево/вправо;
+
+	var page = 1;
+	var pageMax = 1;
+	var pstEND = false;
+	var lnkStart = '/viewtopic.php?id='+temaID+'&p=';
+   	function getY(page){
+		$.get(lnkStart+page, function (data){
+        		var aPage = $(data).find('.pagelink:first a.next').prev();//alert('page='+page)
+        		if(page == 1&&aPage.length){
+         			pageMax = +(aPage.attr('href').split('&p=')[1]);
+          			for(var i = 2;i<pageMax+1;i++){getY(i)}
+        		}
+
+			if(page == pageMax){pstEND = +$(data).find('.post:last>h3 > span> strong').text();}
+
+			$(data).find('div.post').each(function(p){
+        			$(this).find('.post-sig,.lastedit').remove();
+				if(page == 1&&!p){addFirstPostGift(this); return true;}
+				var numPost = +$(this).find('h3 > span > strong').text();
+				var dats = $(this).find('h3 > span > strong +a').text();
+				var Jcontent=$(this).find('div.post-content').html().replace(/ht<del><\/del>tp:\/\//gim,'http://')
+				.replace(/\[iмg\]([^\[\]]+)\[\/iмg\]/gim,'<img class="postimg" src="$1"/>'); //Замена BB-кода картинки;
+				var giftreg = /(\[gift\])(.*?)(\[\/gift\])(<br>){0,100}/;
+				var giftarr = Jcontent.match(giftreg);
+
+				var pos = 2-(Jcontent.length % 5);
+
+				Jcontent = Jcontent.replace(giftreg,'')
+				.replace(/\[gift\]([^\[\]]+)\[\/gift\]/gim,'<img width="32" height="32" src="$1">');
+				if (giftarr!=null && giftarr[2]!='') Jgift = giftarr[2];
+				else Jgift = 'http://spravka.mybb.ru/files/0013/65/ed/59572.png'; //imgArray[Jcontent.length % imgArray.length];
+
+				var Jauthor=$(this).find('.pa-author a').text()
+				.replace(/"/gim,'&quot;').replace(/</gim,'&lt;')
+				.replace(/>/gim,'&gt;').replace(/'/gim,"&#39;");
+				if(Jauthor=='') Jauthor = $(this).find('.pa-author').text().replace(/Автор:/,'');
+
+				sell = randomPos(232);
+				var pos = verticalRand($(".sell"+(sell+1)), pos);
+				if(numPost==pstEND||numPost >= maxgift-1){$(".sell"+(sell+1)).addClass('End');}	//pstEnd
+
+				addGift($(".sell"+(sell+1)), Jgift, Jauthor, dats, Jcontent, pos)
+				if(numPost >= maxgift-1){
+					alert('Num_Post='+numPost +'; Eлка переполнена!!!');
+					$('#giftsub').attr({'disabled':'true','value':'Eлка переполнена!'});
+					return false;
+				}
+
+			});
+
+		});
+
+	}  getY(page);
+
+}
+  christmasPage()
+
+</script>
+
+<!-- Cнег на форуме -->
+ <script type="text/javascript">
+ imageDir = "http://mvcreative.ru/example/6/2/snow/";
+ sflakesMax = 65;
+ sflakesMaxActive = 65;
+ svMaxX = 2;
+ svMaxY = 6;
+ ssnowStick = 1;
+ ssnowCollect = 0;
+ sfollowMouse = 1;
+ sflakeBottom = 0;
+ susePNG = 1;
+ sflakeTypes = 5;
+ sflakeWidth = 15;
+ sflakeHeight = 15;
+ </script>
+
+<a href="/" id="com_back" style="position:fixed;left:70px;top:30px;" title="Назад, на Форум!"><img src="http://spravka.mybb.ru/files/0013/65/ed/26485.png"/></a>
+<script>$('#com_back').tipsy({fade: true, gravity: 'ws',delayIn: 550, delayOut: 300});</script>
+<script type="text/javascript" src="http://mvcreative.ru/example/6/2/snow.js"></script>
+
+      ==123==;*/
+} Christmas_Tree = Christmas_Tree.toString().split('==123==;')[1];
+
+
+document.write(Christmas_Tree);
