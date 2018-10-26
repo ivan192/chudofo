@@ -1,0 +1,184 @@
+function Christmas_Form (){ /*==123==;
+
+<style>
+.wrp-frm {position: fixed; top: 30px; right: 20px;z-index:20}
+#addform-button {cursor: pointer; position:absolute; right: 0px; width: 128px; height: 128px;  background: url(http://spravka.mybb.ru/files/0013/65/ed/42183.png);}
+img[onclick],input[type="submit"]{cursor: pointer;} #form-addgift > img[onclick],#color-area img[onclick]{background: rgba(191,198,214);padding:2px; box-shadow: 1px 1px 2px #435689;}
+
+.form-wrp2 {display: none; position:relative; top: 133px; float:right; left:auto; right: 0px; margin:0 0 auto auto; padding: 10px 15px 7px 15px; min-height: 270px; width: 280px; border-radius: 10px; border: 1px solid #fff; background: rgba(255,255,255,.7)!important;}
+.form-wrp2 #form-addgift .hide-elem {display:none}
+.form-wrp2 label {font: 12px/1.2 Arial; display: inline-block; padding: 5px 0;}
+.form-wrp2 textarea {font: 12px/1.2 Arial; border-radius: 8px; border: 1px solid rgba(0,0,0,.2); margin-top:3px; padding: 3px 5px; min-height: 166px; width: 272px; min-width: 272px;}
+.form-wrp2 input {border-radius: 5px;border: 1px solid rgba(0,0,0,.2); padding: 3px;}
+.form-wrp2 input[type="submit"] {background: #1a3d67; background: linear-gradient(to bottom, #1a3d67 0%, #122852 100%); border: 1px solid #0a173a;  color: #fff; padding: 8px 15px 7px; text-decoration: none; box-shadow: inset 0 1px 0 #566d8d; margin-top: 15px;}
+.form-wrp2 #gift-select {display:block; position:absolute; margin-top:-14px; right:15px; font: 12px/1.2 Arial;color: #000;}
+.form-wrp2 .container {position:absolute; top:auto!important; margin-top:15px!important; margin:100px -6px auto auto; z-index:1000; padding:17px; border-radius: 10px; border:1px solid #fff!important; background: rgba(255,255,255,.78)!important;}
+.form-wrp2 #gift-area {width: 299px!important; padding: 8px 5px;right:6px;}
+.form-wrp2 #gift-area img {padding: 3px;width: 30px; height: 30px;cursor: pointer}
+</style>
+
+
+<div class='wrapper'>
+	<div class='col'>
+		<div class='row row1'><div class='row-wrap'></div></div>
+		<div class='row row2'><div class='row-wrap'></div></div>
+		<div class='row row3'><div class='row-wrap'></div></div>
+		<div class='row row4'><div class='row-wrap'></div></div>
+		<div class='row row5'><div class='row-wrap'></div></div>
+		<div class='row row6'><div class='row-wrap'></div></div>
+		<div class='row row7'><div class='row-wrap'></div></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+//alert();
+function setShowForm(){
+  $('.form-wrp2').toggle('slow').toggleClass('active');
+  if($('.form-wrp2').hasClass('active')==false) {$('.wrp-frm').css('position','fixed');return;}
+  if($(window).height() < 720)$('.wrp-frm').css({'position':'absolute'});
+}
+$(window).resize(function(){
+   if($('.form-wrp2').hasClass('active')){
+      if($(window).height() < 720){$('.wrp-frm').css({'position':'absolute'});}
+      else  {$('.wrp-frm').css('position','fixed');}
+   }
+});
+</script>
+<div class='wrp-frm'>
+    <div id="addform-button" onclick="setShowForm()"></div>
+
+    <div class='form-wrp2' >
+
+	<form id='form-addgift' onsubmit='sendForm(this);return false' name='post'>
+		<p class="hide-elem"><label for='giftname'>Имя:</label><br ><input type='text' id='giftname'></p>
+		<label for='giftmess'>Желание:</label><br >
+
+		<img onclick="toggleElm('#color-area')" title="Цвет текста" src="/i/color_swatch.png" style="float:right; margin-right:2px"/>
+		<img onclick="bbcode('[b]','[/b]')" src="/i/text_bold.png" title="Жирный" style="float:right; margin-right:6px"/>
+		<img onclick="toggleElm('#smilies-area')" src="/i/smile.png" title="Смайлы" style="float:right; margin-right:6px"/>
+		<img   src='/i/images.png' title="Вставка картинок
+     в 'Пожелание'" onclick="bbcode('[i'+'mg]','['+'/i'+'mg]')" style="float:right;margin-right:6px;">
+		<img  src="http://spravka.mybb.ru/files/0013/65/ed/23274.png" height="18" width="20" title="Вставка cвоих Подарков
+        в 'Пожелание'" onclick="bbcode('[gift]','[/gift]')" style="float:right; margin-right:6px;padding:1px;"><br/>
+		<textarea name='req_message' id='giftmess' cols='45' rows='13'></textarea>
+		<input type='submit' id='giftsub' value='Добавить желание'>
+
+		<div style="width:100%;height:2px;"> &#160; </div>
+
+		<a  id="gift-select" onclick="toggleElm('#gift-area');return false" href="#">Выбрать подарок</a>
+
+
+		<div class="container" id="color-area" style="display:none;" onclick="changeVisibility('color-area')">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="background-color:black"><img onclick="bbcode('[color=black]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:silver"><img onclick="bbcode('[color=silver]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:gray"><img onclick="bbcode('[color=gray]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:white"><img onclick="bbcode('[color=white]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:maroon"><img onclick="bbcode('[color=maroon]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:red"><img onclick="bbcode('[color=red]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:purple"><img onclick="bbcode('[color=purple]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:fuchsia"><img onclick="bbcode('[color=fuchsia]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:green"><img onclick="bbcode('[color=green]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:lime"><img onclick="bbcode('[color=lime]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:olive"><img onclick="bbcode('[color=olive]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:yellow"><img onclick="bbcode('[color=yellow]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:navy"><img onclick="bbcode('[color=navy]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:blue"><img onclick="bbcode('[color=blue]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:teal"><img onclick="bbcode('[color=teal]','[/color]')" src="/i/blank.gif" /></td>
+					<td style="background-color:aqua"><img onclick="bbcode('[color=aqua]','[/color]')" src="/i/blank.gif" /></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="container" id="smilies-area" style="display:none" onclick="changeVisibility('smilies-area')">
+			<div id="smilies-block">
+<img src="/img/smilies/MyBB/light/angry.gif" alt=":angry:" onclick="smile(':angry:')" /><img src="/img/smilies/MyBB/light/blink.gif" alt="o.O" onclick="smile('o.O')" /><img src="/img/smilies/MyBB/light/blush.gif" alt=":blush:" onclick="smile(':blush:')" /><img src="/img/smilies/MyBB/light/canthearyou.gif" alt=":canthearyou:" onclick="smile(':canthearyou:')" /><img src="/img/smilies/MyBB/light/confused.gif" alt=":confused:" onclick="smile(':confused:')" /><img src="/img/smilies/MyBB/light/cool.gif" alt=":cool:" onclick="smile(':cool:')" /><img src="/img/smilies/MyBB/light/crazyfun.gif" alt=":crazyfun:" onclick="smile(':crazyfun:')" /><img src="/img/smilies/MyBB/light/crazy.gif" alt=":crazy:" onclick="smile(':crazy:')" /><img src="/img/smilies/MyBB/light/cry.gif" alt=":'(" onclick="smile(':\'(')" /><img src="/img/smilies/MyBB/light/disappointed.gif" alt=":disappointed:" onclick="smile(':disappointed:')" /><img src="/img/smilies/MyBB/light/dontcare.gif" alt=":dontcare:" onclick="smile(':dontcare:')" /><img src="/img/smilies/MyBB/light/dontknow.gif" alt=":dontknow:" onclick="smile(':dontknow:')" /><img src="/img/smilies/MyBB/light/flag.gif" alt=":flag:" onclick="smile(':flag:')" /><img src="/img/smilies/MyBB/light/flirt.gif" alt=":flirt:" onclick="smile(':flirt:')" /><img src="/img/smilies/MyBB/light/funny.gif" alt="8-)" onclick="smile('8-)')" /><img src="/img/smilies/MyBB/light/glasses.gif" alt=":glasses:" onclick="smile(':glasses:')" /><img src="/img/smilies/MyBB/light/happy.gif" alt="^^" onclick="smile('^^')" /><img src="/img/smilies/MyBB/light/hobo.gif" alt=":hobo:" onclick="smile(':hobo:')" /><img src="/img/smilies/MyBB/light/huh.gif" alt=":huh:" onclick="smile(':huh:')" /><img src="/img/smilies/MyBB/light/idea.gif" alt=":idea:" onclick="smile(':idea:')" /><img src="/img/smilies/MyBB/light/insane.gif" alt=":insane:" onclick="smile(':insane:')" /><img src="/img/smilies/MyBB/light/jumping.gif" alt=":jumping:" onclick="smile(':jumping:')" /><img src="/img/smilies/MyBB/light/lol.gif" alt=":D" onclick="smile(':D')" /><img src="/img/smilies/MyBB/light/love.gif" alt=":love:" onclick="smile(':love:')" /><img src="/img/smilies/MyBB/light/mad.gif" alt=":mad:" onclick="smile(':mad:')" /><img src="/img/smilies/MyBB/light/music.gif" alt=":music:" onclick="smile(':music:')" /><img src="/img/smilies/MyBB/light/mybb.gif" alt=":mybb:" onclick="smile(':mybb:')" /><img src="/img/smilies/MyBB/light/neutral.gif" alt=":|" onclick="smile(':|')" /><img src="/img/smilies/MyBB/light/no.gif" alt=":no:" onclick="smile(':no:')" /><img src="/img/smilies/MyBB/light/nope.gif" alt=":nope:" onclick="smile(':nope:')" /><img src="/img/smilies/MyBB/light/offtop.gif" alt=":offtop:" onclick="smile(':offtop:')" /><img src="/img/smilies/MyBB/light/playful.gif" alt=":playful:" onclick="smile(':playful:')" /><img src="/img/smilies/MyBB/light/question.gif" alt=":question:" onclick="smile(':question:')" /><img src="/img/smilies/MyBB/light/rain.gif" alt=":rain:" onclick="smile(':rain:')" /><img src="/img/smilies/MyBB/light/rofl.gif" alt=":rofl:" onclick="smile(':rofl:')" /><img src="/img/smilies/MyBB/light/rolleyes.gif" alt=":rolleyes:" onclick="smile(':rolleyes:')" /><img src="/img/smilies/MyBB/light/sad.gif" alt=":(" onclick="smile(':(')" /><img src="/img/smilies/MyBB/light/sceptic.gif" alt=":sceptic:" onclick="smile(':sceptic:')" /><img src="/img/smilies/MyBB/light/shine.gif" alt=":shine:" onclick="smile(':shine:')" /><img src="/img/smilies/MyBB/light/shock.gif" alt=":O" onclick="smile(':O')" /><img src="/img/smilies/MyBB/light/sick.gif" alt=":x" onclick="smile(':x')" /><img src="/img/smilies/MyBB/light/smile.gif" alt=":)" onclick="smile(':)')" /><img src="/img/smilies/MyBB/light/smoke.gif" alt=":smoke:" onclick="smile(':smoke:')" /><img src="/img/smilies/MyBB/light/stupor.gif" alt=":stupor:" onclick="smile(':stupor:')" /><img src="/img/smilies/MyBB/light/surprise.gif" alt=":surprise:" onclick="smile(':surprise:')" /><img src="/img/smilies/MyBB/light/suspicious.gif" alt=":suspicious:" onclick="smile(':suspicious:')" /><img src="/img/smilies/MyBB/light/tir
+ed.gif" alt=":tired:" onclick="smile(':tired:')" /><img src="/img/smilies/MyBB/light/tomato.gif" alt=":tomato:" onclick="smile(':tomato:')" /><img src="/img/smilies/MyBB/light/tongue.gif" alt=":P" onclick="smile(':P')" /><img src="/img/smilies/MyBB/light/unsure.gif" alt=":unsure:" onclick="smile(':unsure:')" /><img src="/img/smilies/MyBB/light/wacko.gif" alt="%-)" onclick="smile('%-)')" /><img src="/img/smilies/MyBB/light/whistle.gif" alt=":whistle:" onclick="smile(':whistle:')" /><img src="/img/smilies/MyBB/light/wink.gif" alt=";)" onclick="smile(';)')" /><img src="/img/smilies/MyBB/light/writing.gif" alt=":writing:" onclick="smile(':writing:')" /><img src="/img/smilies/MyBB/light/yep.gif" alt=":yep:" onclick="smile(':yep:')" />
+			</div>
+		</div>
+
+		<div class="container" id="gift-area" style="display:none">
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/42529.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/15816.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/78790.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/76906.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/33816.png' onclick='giftBtn(this)'>
+
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/68752.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/59572.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/23274.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/72889.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/34940.gif' onclick='giftBtn(this)'>
+
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/41533.gif' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/54545.png' onclick='giftBtn(this)'>
+			<img src='http://mybb.forum4.ru/files/0013/65/ed/68837.png' onclick='giftBtn(this)'>
+
+		</div>
+
+	</form>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/js/reply.14.js"></script>
+
+<script type="text/javascript">
+if(GroupID==3)$('#form-addgift .hide-elem').show();
+
+function toggleElm(elem){
+  $('#form-addgift .container').not(elem).hide();
+  $(elem).toggle();
+}
+
+function giftBtn(img){
+  var imglink = $(img).attr('src');
+  document.getElementById("giftmess").value+="[gift]"+imglink+"[/gift]";
+}
+
+var frame = '<iframe src="/post.php?tid='+temaID+'" id="christmas-tree_frame" name="christmas_tree_frame" scrolling="no" style="position:absolute;z-index:-100;height:2px;width:1px"></iframe>';//
+document.write(frame);
+function sendForm(form){
+ $('#christmas-tree_frame').unbind('load');
+ var topicForm = $('#christmas-tree_frame').contents().find('form#post');
+ var userName = topicForm.find('#fld1')[0];
+ var textarea = topicForm.find('#main-reply')[0];
+ var submit = topicForm.find('input[value="Отправить"]');
+
+ var giftname = $(form).find('#giftname');
+ var giftarea = $(form).find('#giftmess');
+ var str = giftarea.val().replace(/\[img\]([^\[\]]+)\[\/img\]/gim,'[iмg]$1[/iмg]'); //Замена BB-кода картинки;
+ str = str.replace(/http:\/\//gim,'ht['+'s][/'+'s]tp://');
+
+ if(GroupID==3){
+    userName.value = giftname.val();
+    var rega = /\[img\]|\[url\]|http:\/\//gim;
+    if(rega.test(str)) {
+    alert('Гостю запрещены картинки и ссылки!'); return false;
+    }
+ }
+ textarea.value = str;
+
+ $('#christmas-tree_frame').bind('load',function(){
+    $('#christmas-tree_frame').unbind('load');
+    if($('#christmas-tree_frame').contents().find('#pun-redirect,#pun-viewtopic').length){
+    giftname.val('');
+    giftarea.val('');
+    $('.row-wrap').empty();
+    $('#addform-button').click();
+    christmasPage()
+    }
+ });
+
+ submit.click();
+}
+
+</script>
+
+      ==123==;*/
+} Christmas_Form = Christmas_Form.toString().split('==123==;')[1];
+
+
+document.write(Christmas_Form);
